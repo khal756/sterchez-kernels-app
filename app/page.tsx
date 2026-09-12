@@ -39,7 +39,7 @@ export default function Home() {
       <Navbar />
 
       {/* Carousel Wallpaper Hero */}
-      <header className="relative h-[85vh] w-full overflow-hidden bg-gray-900 flex-grow">
+      <header className="relative h-[75vh] sm:h-[80vh] md:h-[85vh] w-full overflow-hidden bg-gray-900 flex-grow">
         {carouselImages.map((slide, index) => (
           <div
             key={index}
@@ -47,24 +47,24 @@ export default function Home() {
               index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
             }`}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30 md:to-transparent z-10" />
             <img src={slide.url} alt={slide.title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 z-20 flex items-center max-w-7xl mx-auto px-6">
-              <div className="max-w-xl space-y-4 text-white">
-                <span className="bg-amber-600 text-white text-xs font-bold uppercase px-3 py-1 rounded-full tracking-wider">
+            <div className="absolute inset-0 z-20 flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-xl space-y-3 sm:space-y-4 text-white">
+                <span className="inline-block bg-amber-600 text-white text-xs font-bold uppercase px-3 py-1 rounded-full tracking-wider">
                   Premier Breeders
                 </span>
-                <h1 className="text-4xl md:text-6xl font-black leading-tight drop-shadow-md">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-black leading-tight drop-shadow-md">
                   {slide.title}
                 </h1>
-                <p className="text-lg text-gray-200 font-medium">
+                <p className="text-sm sm:text-base md:text-lg text-gray-200 font-medium">
                   {slide.subtitle}
                 </p>
-                <div className="pt-4 flex gap-4">
-                  <Link href="/catalog" className="bg-amber-600 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-amber-700 transition shadow-lg">
+                <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <Link href="/catalog" className="bg-amber-600 text-white px-6 sm:px-8 py-3 rounded-xl font-bold text-center hover:bg-amber-700 transition shadow-lg text-sm sm:text-base">
                     View Available Dogs
                   </Link>
-                  <Link href="/catalog" className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-3.5 rounded-xl font-bold hover:bg-white/20 transition">
+                  <Link href="/catalog" className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-6 sm:px-8 py-3 rounded-xl font-bold text-center hover:bg-white/20 transition text-sm sm:text-base">
                     Explore Adoption
                   </Link>
                 </div>
@@ -75,37 +75,39 @@ export default function Home() {
 
         <button
           onClick={() => setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full backdrop-blur-sm transition"
+          aria-label="Previous Slide"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
         <button
           onClick={() => setCurrentSlide((prev) => (prev + 1) % carouselImages.length)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-sm transition"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 bg-black/40 hover:bg-black/70 text-white p-2 sm:p-3 rounded-full backdrop-blur-sm transition"
+          aria-label="Next Slide"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       </header>
 
       {/* Highlights Bar */}
-      <section className="bg-amber-50 py-12 border-y border-amber-100">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+      <section className="bg-amber-50 py-8 sm:py-12 border-y border-amber-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           <div className="flex items-start gap-4 bg-white p-6 rounded-2xl shadow-sm border border-amber-100">
-            <div className="bg-amber-100 p-3 rounded-xl text-amber-700"><Shield className="w-6 h-6" /></div>
+            <div className="bg-amber-100 p-3 rounded-xl text-amber-700 shrink-0"><Shield className="w-6 h-6" /></div>
             <div>
               <h3 className="font-bold text-gray-900 text-lg">Health Guaranteed</h3>
               <p className="text-sm text-gray-600 mt-1">All our puppies are fully vaccinated and vet-checked.</p>
             </div>
           </div>
           <div className="flex items-start gap-4 bg-white p-6 rounded-2xl shadow-sm border border-amber-100">
-            <div className="bg-amber-100 p-3 rounded-xl text-amber-700"><Award className="w-6 h-6" /></div>
+            <div className="bg-amber-100 p-3 rounded-xl text-amber-700 shrink-0"><Award className="w-6 h-6" /></div>
             <div>
               <h3 className="font-bold text-gray-900 text-lg">Elite Bloodlines</h3>
               <p className="text-sm text-gray-600 mt-1">Carefully bred purebred dogs with exceptional temperament.</p>
             </div>
           </div>
-          <div className="flex items-start gap-4 bg-white p-6 rounded-2xl shadow-sm border border-amber-100">
-            <div className="bg-amber-100 p-3 rounded-xl text-amber-700"><Heart className="w-6 h-6" /></div>
+          <div className="flex items-start gap-4 bg-white p-6 rounded-2xl shadow-sm border border-amber-100 sm:col-span-2 md:col-span-1">
+            <div className="bg-amber-100 p-3 rounded-xl text-amber-700 shrink-0"><Heart className="w-6 h-6" /></div>
             <div>
               <h3 className="font-bold text-gray-900 text-lg">Adoption Program</h3>
               <p className="text-sm text-gray-600 mt-1">We help rescue and rehome dogs into safe, loving environments.</p>
